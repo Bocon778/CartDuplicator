@@ -1,0 +1,7 @@
+{
+    "name": "CartDuplicator",
+    "description": "Spawns with two carts instead of one.",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/Bocon778/CartDuplicator/",
+    "dependencies": []
+  }
