@@ -17,7 +17,7 @@ namespace CartDuplicator
     {
         private const string modGUID = "Bocon.CartDuplicator";
         private const string modeName = "Cart Duplicator";
-        private const string modVersion = "1.0.0";
+        private const string modVersion = "1.2.0";
 
         private readonly Harmony harmony = new Harmony(modGUID);
 
@@ -26,8 +26,8 @@ namespace CartDuplicator
         internal ManualLogSource mls;
 
         // Configuration fields
-        private ConfigEntry<float> duplicationDelay;
         private ConfigEntry<Vector3> duplicationOffset;
+        private ConfigEntry<int> duplicationAmount;
 
         void Awake()
         {
@@ -39,8 +39,8 @@ namespace CartDuplicator
             mls = BepInEx.Logging.Logger.CreateLogSource(modGUID);
 
             // Define configuration settings
-            duplicationDelay = Config.Bind("General", "DuplicationDelay", 1f, "Delay before duplicating the cart (in seconds)");
             duplicationOffset = Config.Bind("General", "DuplicationOffset", new Vector3(2f, 0f, 0f), "Offset for the duplicated cart position");
+            duplicationAmount = Config.Bind("General", "DuplicationAmount", 1, "Number of additional carts to duplicate");
 
             mls.LogInfo("Cart Duplicator Mod Loaded");
 
@@ -49,7 +49,7 @@ namespace CartDuplicator
         }
 
         // Methods to access configuration values
-        public static float GetDuplicationDelay() => Instance.duplicationDelay.Value;
         public static Vector3 GetDuplicationOffset() => Instance.duplicationOffset.Value;
+        public static int GetDuplicationAmount() => Instance.duplicationAmount.Value;
     }
 }
