@@ -9,7 +9,7 @@ Cart Duplicator is a mod for duplicating carts in the game. This mod allows you 
 
 ## Installation
 
-1. Download and install [BepInEx](https://github.com/BepInEx/BepInEx).
+1. Download and install [BepInEx](https://thunderstore.io/c/repo/p/BepInEx/BepInExPack/).
 2. Place the `CartDuplicator.dll` file in the `BepInEx/plugins` directory.
 
 ## Configuration
@@ -18,7 +18,7 @@ After the first run, a configuration file will be generated at `BepInEx/config/B
 
 ### Configuration Options
 
-- **DuplicationDelay**: Delay before duplicating the cart (in seconds). Default is `1.0`.
+- **DuplicationAmount**: Number of additional carts to duplicate. Default is `1.0`.
 - **DuplicationOffset**: Offset for the duplicated cart position. Default is `(2.0, 0.0, 0.0)`.
 
 ## Usage

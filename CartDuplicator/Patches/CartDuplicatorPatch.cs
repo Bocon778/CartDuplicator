@@ -13,6 +13,8 @@ namespace CartDuplicator.Patches
         {
             if (item == null || volume == null) return;
 
+            if (item.itemAssetName != "Item Cart Medium") return;
+
             int duplicationAmount = CartDuplicator.GetDuplicationAmount();
             Vector3 duplicationOffset = CartDuplicator.GetDuplicationOffset();
 
