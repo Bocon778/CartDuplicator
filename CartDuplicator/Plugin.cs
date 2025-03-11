@@ -17,7 +17,7 @@ namespace CartDuplicator
     {
         private const string modGUID = "Bocon.CartDuplicator";
         private const string modeName = "Cart Duplicator";
-        private const string modVersion = "1.2.0";
+        private const string modVersion = "1.3.0";
 
         private readonly Harmony harmony = new Harmony(modGUID);
 
@@ -28,6 +28,7 @@ namespace CartDuplicator
         // Configuration fields
         private ConfigEntry<Vector3> duplicationOffset;
         private ConfigEntry<int> duplicationAmount;
+        private ConfigEntry<bool> smallCartReplacement;
 
         void Awake()
         {
@@ -40,7 +41,10 @@ namespace CartDuplicator
 
             // Define configuration settings
             duplicationOffset = Config.Bind("General", "DuplicationOffset", new Vector3(2f, 0f, 0f), "Offset for the duplicated cart position");
-            duplicationAmount = Config.Bind("General", "DuplicationAmount", 1, "Number of additional carts to duplicate");
+            duplicationAmount = Config.Bind("General", "DuplicationAmount", 1,
+                new ConfigDescription("Number of additional carts to duplicate",
+                new AcceptableValueRange<int>(0, 10)));
+            smallCartReplacement = Config.Bind("General", "SmallCartReplacement", false, "Replace the duplicated carts with the pocket C.A.R.T.");
 
             mls.LogInfo("Cart Duplicator Mod Loaded");
 
@@ -51,5 +55,7 @@ namespace CartDuplicator
         // Methods to access configuration values
         public static Vector3 GetDuplicationOffset() => Instance.duplicationOffset.Value;
         public static int GetDuplicationAmount() => Instance.duplicationAmount.Value;
+
+        public static bool GetSmallCartReplacement() => Instance.smallCartReplacement.Value;
     }
 }

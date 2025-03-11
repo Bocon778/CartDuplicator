@@ -17,13 +17,14 @@ namespace CartDuplicator.Patches
 
             int duplicationAmount = CartDuplicator.GetDuplicationAmount();
             Vector3 duplicationOffset = CartDuplicator.GetDuplicationOffset();
+            string cartPrefabName = CartDuplicator.GetSmallCartReplacement() ? "Item Cart Small" : item.prefab.name;
 
             // Multiplayer spawning
             if (PhotonNetwork.IsConnected && PhotonNetwork.IsMasterClient)
             {
                 for (int i = 0; i < duplicationAmount; i++)
                 {
-                    PhotonNetwork.InstantiateRoomObject("Items/" + item.prefab.name,
+                    PhotonNetwork.InstantiateRoomObject("Items/" + cartPrefabName,
                         volume.transform.position + duplicationOffset * (i + 1),
                         item.spawnRotationOffset);
                 }
@@ -31,19 +32,17 @@ namespace CartDuplicator.Patches
             // Singleplayer spawning
             else if (!PhotonNetwork.IsConnected)
             {
+                var prefabToSpawn = CartDuplicator.GetSmallCartReplacement()
+                    ? Resources.Load<GameObject>("Items/Item Cart Small")
+                    : item.prefab;
+
                 for (int i = 0; i < duplicationAmount; i++)
                 {
-                    UnityEngine.Object.Instantiate(item.prefab,
+                    UnityEngine.Object.Instantiate(prefabToSpawn,
                         volume.transform.position + duplicationOffset * (i + 1),
                         item.spawnRotationOffset);
                 }
             }
-        }
-
-        public override void OnEnable()
-        {
-            base.OnEnable();
-            Debug.Log("Cart Duplicator: Patch enabled");
         }
     }
 }
