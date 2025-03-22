@@ -1,6 +1,5 @@
 # Cart Duplicator Mod
 
-# Water Bottles Mod
 > **Note**: Only the host needs to install this mod!
 > 
 > [![Discord](https://img.shields.io/discord/1275570356849086535?color=7289DA&label=Discord&logo=discord&logoColor=white)](https://discord.gg/8pzZYXjxUA)
