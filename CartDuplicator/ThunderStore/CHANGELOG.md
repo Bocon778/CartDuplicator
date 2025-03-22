@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.4.0
+- New dynamic spawning option!
+- Spawning based off player count. (10+ Players, 3 Carts)  (5+ Players, 2 Carts)
+
 ## Version 1.3.0
 - Added option for the cart(s) to spawn as a small cart
 - Fixed REPOConfig compatibility

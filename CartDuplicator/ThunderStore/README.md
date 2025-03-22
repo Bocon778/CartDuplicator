@@ -1,5 +1,12 @@
 # Cart Duplicator Mod
 
+# Water Bottles Mod
+> **Note**: Only the host needs to install this mod!
+> 
+> [![Discord](https://img.shields.io/discord/1275570356849086535?color=7289DA&label=Discord&logo=discord&logoColor=white)](https://discord.gg/8pzZYXjxUA)
+> 
+> **Join our Discord community for support, updates and feature requests!**
+
 Cart Duplicator is a mod for duplicating carts in the game. This mod allows you to duplicate carts with a configurable amounts and offsets.
 
 ## Features
@@ -21,6 +28,7 @@ After the first run, a configuration file will be generated at `BepInEx/config/B
 - **DuplicationAmount**: Number of additional carts to duplicate. Default is `1.0`.
 - **DuplicationOffset**: Offset for the duplicated cart position. Default is `(2.0, 0.0, 0.0)`.
 - **SmallCartReplacement**: Replace the duplicated carts with the pocket C.A.R.T. Default is `true`.
+- **DynamicSpawning**: Enable dynamic spawning based on player count. Default is `true`.
 
 ## Usage
 

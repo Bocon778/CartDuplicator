@@ -1,6 +1,7 @@
 using HarmonyLib;
 using Photon.Pun;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace CartDuplicator.Patches
 {
@@ -18,6 +19,22 @@ namespace CartDuplicator.Patches
             int duplicationAmount = CartDuplicator.GetDuplicationAmount();
             Vector3 duplicationOffset = CartDuplicator.GetDuplicationOffset();
             string cartPrefabName = CartDuplicator.GetSmallCartReplacement() ? "Item Cart Small" : item.prefab.name;
+
+            // Get player count
+            int playerCount = GetPlayerCount();
+
+            // Adjust duplication amount based on player count if dynamic spawning is enabled
+            if (CartDuplicator.GetDynamicSpawning())
+            {
+                if (playerCount >= 10)
+                {
+                    duplicationAmount += 2;
+                }
+                else if (playerCount >= 5)
+                {
+                    duplicationAmount += 1;
+                }
+            }
 
             // Multiplayer spawning
             if (PhotonNetwork.IsConnected && PhotonNetwork.IsMasterClient)
@@ -43,6 +60,16 @@ namespace CartDuplicator.Patches
                         item.spawnRotationOffset);
                 }
             }
+        }
+
+        public static List<PlayerAvatar> PlayerGetAll()
+        {
+            return GameDirector.instance.PlayerList;
+        }
+
+        public static int GetPlayerCount()
+        {
+            return PlayerGetAll().Count;
         }
     }
 }

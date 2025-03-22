@@ -17,7 +17,7 @@ namespace CartDuplicator
     {
         private const string modGUID = "Bocon.CartDuplicator";
         private const string modeName = "Cart Duplicator";
-        private const string modVersion = "1.3.0";
+        private const string modVersion = "1.4.0";
 
         private readonly Harmony harmony = new Harmony(modGUID);
 
@@ -29,6 +29,7 @@ namespace CartDuplicator
         private ConfigEntry<Vector3> duplicationOffset;
         private ConfigEntry<int> duplicationAmount;
         private ConfigEntry<bool> smallCartReplacement;
+        private ConfigEntry<bool> dynamicSpawning;
 
         void Awake()
         {
@@ -45,6 +46,8 @@ namespace CartDuplicator
                 new ConfigDescription("Number of additional carts to duplicate",
                 new AcceptableValueRange<int>(0, 10)));
             smallCartReplacement = Config.Bind("General", "SmallCartReplacement", false, "Replace the duplicated carts with the pocket C.A.R.T.");
+            dynamicSpawning = Config.Bind("General", "DynamicSpawning", false, "Enable dynamic spawning based on player count");
+
 
             mls.LogInfo("Cart Duplicator Mod Loaded");
 
@@ -55,7 +58,7 @@ namespace CartDuplicator
         // Methods to access configuration values
         public static Vector3 GetDuplicationOffset() => Instance.duplicationOffset.Value;
         public static int GetDuplicationAmount() => Instance.duplicationAmount.Value;
-
         public static bool GetSmallCartReplacement() => Instance.smallCartReplacement.Value;
+        public static bool GetDynamicSpawning() => Instance.dynamicSpawning.Value;
     }
 }
