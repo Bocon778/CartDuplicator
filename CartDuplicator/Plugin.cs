@@ -17,7 +17,7 @@ namespace CartDuplicator
     {
         private const string modGUID = "Bocon.CartDuplicator";
         private const string modeName = "Cart Duplicator";
-        private const string modVersion = "1.4.0";
+        private const string modVersion = "1.5.0";
 
         private readonly Harmony harmony = new Harmony(modGUID);
 
